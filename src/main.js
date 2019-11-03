@@ -3,11 +3,12 @@
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
 import VueMarkdown from "vue-markdown";
+import VueAnalytics from "vue-analytics";
 import "vuetify/src/stylus/app.styl";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 //  { router, head, isClient } as an option is available
-export default function(Vue) {
+export default function(Vue, { router }) {
   Vue.config.productionTip = false;
   Vue.component("vue-markdown", VueMarkdown);
   Vue.use(Vuetify, {
@@ -22,5 +23,9 @@ export default function(Vue) {
       success: "#000080"
     },
     iconfont: "fa"
+  });
+  Vue.use(VueAnalytics, {
+    id: process.env.GRIDSOME_GA,
+    router
   });
 }

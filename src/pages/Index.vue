@@ -34,12 +34,23 @@
     </v-flex>
   </v-layout>
 </template>
-
 <script>
 import FunSwitch from '../components/FunSwitch.vue';
 import Contact from '../components/ContactLinks.vue';
 
 export default {
+  metaInfo() {
+    return {
+      title: 'Home',
+      meta: [
+        {
+          key: 'description',
+          name: 'description',
+          content: 'Home page for Nestors porfilio site'
+        }
+      ]
+    };
+  },
   name: 'home',
   components: {
     FunSwitch,

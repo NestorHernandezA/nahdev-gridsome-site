@@ -78,30 +78,21 @@
   </v-app>
 </template>
 
-<static-query>
-query {
-  metadata {
-    siteName
-    siteDescription
-  }
-}
-</static-query>
-
 <script>
 export default {
-  name: 'App',
   metaInfo() {
     return {
-      title: this.$static.metadata.siteName,
+      title: 'Porfolio',
       meta: [
         {
           key: 'description',
           name: 'description',
-          content: this.$static.metadata.siteDescription
+          content: 'Porfolio website'
         }
       ]
     };
   },
+  name: 'App',
   data() {
     return {
       background: 'code',

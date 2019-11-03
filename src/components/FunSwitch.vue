@@ -1,20 +1,27 @@
 <template>
-<!-- Credit goes to https://github.com/DannyFeliz/vue-rocker-switch  -->
+  <!-- Credit goes to https://github.com/DannyFeliz/vue-rocker-switch  -->
   <div class="fun-switch-container">
-    <label class="fun" :style="this.funSize" @click.prevent="">
+    <label
+      class="fun"
+      :style="this.funSize"
+      @click.prevent=""
+    >
       <input
         type="checkbox"
         v-model="isChecked"
         ref="switch"
-        v-bind="$attrs">
+        v-bind="$attrs"
+      >
       <span
         class="toggle-up"
-        @click="changeState(true, $event)">
+        @click="changeState(true, $event)"
+      >
         <span>{{ onLabel }}</span>
       </span>
       <span
         class="toggle-down"
-        @click="changeState(false, $event)">
+        @click="changeState(false, $event)"
+      >
         <span>{{ offLabel }}</span>
       </span>
     </label>
@@ -22,9 +29,8 @@
 </template>
 
 <script>
-
 export default {
-  name: "funSwitch",
+  name: 'funSwitch',
   props: {
     value: {
       type: Boolean,
@@ -32,42 +38,42 @@ export default {
     },
     size: {
       type: [String, Number],
-      default: "medium",
+      default: 'medium',
       validator(size) {
         return (
-          ["small", "medium", "large"].includes(
+          ['small', 'medium', 'large'].includes(
             size.toString().toLowerCase()
-          ) || typeof size === "number"
+          ) || typeof size === 'number'
         );
       }
     },
     onLabel: {
       type: [String, Number],
-      default: "On"
+      default: 'On'
     },
     offLabel: {
       type: [String, Number],
-      default: "Off"
+      default: 'Off'
     },
     activeColorLabel: {
       type: String,
-      default: "#fff",
+      default: '#fff'
     },
     inactiveColorLabel: {
       type: String,
-      default: "#333",
+      default: '#333'
     },
     backgroundColorOn: {
       type: String,
-      default: "#0084d0",
+      default: '#0084d0'
     },
     backgroundColorOff: {
       type: String,
-      default: "#bd5757",
+      default: '#bd5757'
     },
     borderColor: {
       type: String,
-      default: "#eee",
+      default: '#eee'
     },
     toggle: {
       type: Boolean,
@@ -91,15 +97,15 @@ export default {
     funSize() {
       return {
         fontSize:
-          (typeof this.size === "number" ? this.size : this.sizes[this.size]) +
-          "em"
+          (typeof this.size === 'number' ? this.size : this.sizes[this.size]) +
+          'em'
       };
     },
     isDisabled() {
       return (
         !!(
-          !!this.$attrs.hasOwnProperty("disabled") &&
-          this.$attrs.disabled === ""
+          !!this.$attrs.hasOwnProperty('disabled') &&
+          this.$attrs.disabled === ''
         ) || this.$attrs.disabled === true
       );
     }
@@ -110,22 +116,22 @@ export default {
   watch: {
     value(currentValue, oldValue) {
       if (!this.isDisabled && currentValue != oldValue) {
-          this.isChecked = currentValue;
+        this.isChecked = currentValue;
       }
     },
     isChecked(isOn) {
-        this.$emit("change", isOn);
+      this.$emit('change', isOn);
     }
   },
   methods: {
     setUpColors() {
       const root = this.$el;
 
-      root.style.setProperty("--onColor", this.backgroundColorOn);
-      root.style.setProperty("--offColor", this.backgroundColorOff);
-      root.style.setProperty("--borderColor", this.borderColor);
-      root.style.setProperty("--activeColorLabel", this.activeColorLabel);
-      root.style.setProperty("--inactiveColorLabel", this.inactiveColorLabel);
+      root.style.setProperty('--onColor', this.backgroundColorOn);
+      root.style.setProperty('--offColor', this.backgroundColorOff);
+      root.style.setProperty('--borderColor', this.borderColor);
+      root.style.setProperty('--activeColorLabel', this.activeColorLabel);
+      root.style.setProperty('--inactiveColorLabel', this.inactiveColorLabel);
     },
     changeState(value, event = {}) {
       if (this.isDisabled) {
@@ -175,7 +181,7 @@ export default {
   overflow: hidden;
   border-bottom: 0.5em solid var(--borderColor);
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
+  font-family: 'Arial', sans-serif;
   font-size: 100%;
   user-select: none;
   -webkit-user-select: none;
@@ -190,7 +196,7 @@ export default {
   margin: 1em;
 }
 .fun-switch-container .fun::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0.5em;
   left: 0;
@@ -224,9 +230,9 @@ export default {
   background-color: #ddd;
   transform: rotate(15deg) skewX(15deg);
 }
-.fun-switch-container .toggle-up span{
-    font-size: 0.6em;
-    transform: rotate(-90deg);
+.fun-switch-container .toggle-up span {
+  font-size: 0.6em;
+  transform: rotate(-90deg);
 }
 .fun-switch-container .toggle-down {
   right: 0.5em;
@@ -234,13 +240,13 @@ export default {
   background-color: var(--offColor);
   color: var(--activeColorLabel);
 }
-.fun-switch-container .toggle-down span{
-    font-size: 0.6em;
-    transform: rotate(-90deg);
+.fun-switch-container .toggle-down span {
+  font-size: 0.6em;
+  transform: rotate(-90deg);
 }
 .fun-switch-container .toggle-up::before,
 .fun-switch-container .toggle-down::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 0.4em;
   height: 2.45em;
