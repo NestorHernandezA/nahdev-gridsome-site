@@ -8,5 +8,7 @@ module.exports = {
   siteName: "NahDev",
   siteDescription: "Nestors Portfolio Site",
   icon: ["./src/favicon.ico"],
-  plugins: []
+  plugins: [],
+  siteUrl: "https://nestorhernandeza.github.io",
+  pathPrefix: "/nahdev-gridsome-site"
 };
