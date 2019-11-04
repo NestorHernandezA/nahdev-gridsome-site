@@ -8,6 +8,5 @@ module.exports = {
   siteName: "NahDev",
   siteDescription: "Development Portfolio Website Just for Fun",
   plugins: [],
-  siteUrl: "https://www.nahdev.com",
-  pathPrefix: "/nahdev-gridsome-site"
+  siteUrl: "https://www.nahdev.com"
 };
