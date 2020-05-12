@@ -1,18 +1,8 @@
 <template>
-  <v-app
-    id="inspire"
-    dark
-  >
+  <v-app id="inspire" dark>
     <v-content>
-      <v-container
-        :class="background"
-        fill-height
-        @mouseover="hideNav()"
-      >
-        <transition
-          name="page"
-          mode="out-in"
-        >
+      <v-container :class="background" fill-height @mouseover="hideNav()">
+        <transition name="page" mode="out-in">
           <router-view v-on:switch-change="backgroundChange" />
         </transition>
       </v-container>
@@ -34,41 +24,20 @@
         absolute
         dark
       >
-        <router-link
-          to="/"
-          tag="span"
-          exact
-        >
-          <v-btn
-            flat
-            color="white"
-          >
+        <router-link to="/" tag="span" exact>
+          <v-btn flat color="white">
             <span>Home</span>
             <v-icon>fa-home</v-icon>
           </v-btn>
         </router-link>
-        <router-link
-          to="/about"
-          tag="span"
-          exact
-        >
-          <v-btn
-            flat
-            color="white"
-          >
+        <router-link to="/about" tag="span" exact>
+          <v-btn flat color="white">
             <span>About</span>
             <v-icon>fa-male</v-icon>
           </v-btn>
         </router-link>
-        <router-link
-          to="/about-technology"
-          tag="span"
-          exact
-        >
-          <v-btn
-            flat
-            color="white"
-          >
+        <router-link to="/about-technology" tag="span" exact>
+          <v-btn flat color="white">
             <span>Skills</span>
             <v-icon>fa-book</v-icon>
           </v-btn>
@@ -82,33 +51,33 @@
 export default {
   metaInfo() {
     return {
-      title: 'Porfolio',
+      title: "Porfolio",
       meta: [
         {
-          key: 'description',
-          name: 'description',
-          content: 'Porfolio website'
+          key: "description",
+          name: "description",
+          content: "Porfolio website"
         }
       ]
     };
   },
-  name: 'App',
+  name: "App",
   data() {
     return {
-      background: 'code',
+      background: "code",
       activeBtn: 1,
       showNav: this.isMobile() | false
     };
   },
   computed: {
     isHome() {
-      return this.$route.name === 'home';
+      return this.$route.name === "home";
     }
   },
   methods: {
     backgroundChange() {
-      if (this.background === 'code') this.background = 'dance';
-      else this.background = 'code';
+      if (this.background === "code") this.background = "dance";
+      else this.background = "code";
     },
     isMobile() {
       if (process.isClient) {
@@ -133,6 +102,10 @@ export default {
 };
 </script>
 <style lang="stylus">
+html {
+  overflow: hidden;
+}
+
 .code {
   background-image: url('assets/brackets.png') !important;
   background-repeat: no-repeat;
